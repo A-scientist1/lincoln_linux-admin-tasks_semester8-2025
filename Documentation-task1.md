@@ -1,80 +1,76 @@
----
-generator: Riched20 10.0.19041
----
+Task 1 Doumentation:
 
-[Task 1 Doumentation:]{.underline}
+Task instruction:
 
-[Task instruction:]{.underline}
+**User & Group Management Auttion**
 
-**[User & Group Management Automation (7 Marks)]{.underline}**
+Write a Bash script to create 5 new users, add them to a group
+"devteam", set their passwords, and force them to change password on
+first login.
 
-_Write a Bash script to create 5 new users, add them to a group
-\`devteam\`, set their passwords, and force them to change password on
-first login._
-
-[Script logic:]{.underline}
+Script logic:
 
 A bash script that creates 5 users with the same default password for
 each user, who are assigned either a default username (user1 to user5)
 or a custom username based on user input. All users are added to a group
 called devteam, and their passwords are set to expire upon first login.
 
-[Proposed commands to achieve the script logic:]{.underline}
+Proposed commands to achieve the script logic:
 
-i\. **nano** -\> a linux text editor to create and edit the script file
+i. **nano** -> a linux text editor to create and edit the script file
 
-ii\. shebang (**#!/bin/bash**) -\> used at the beginning of the scriptto
+ii. shebang (**#!/bin/bash**) -> used at the beginning of the scriptto
 indicate that the file is a script and should be interpreted by the Bash
 shell.
 
-iii\. **sudo **-\> gives administrative priviladges by running commands
+iii. **sudo** -> gives administrative priviladges by running commands
 as a root user, necessary for creating groups and users.
 
-iv\. **groupadd -f **-\> creates a goup for users recieving the name for
-the group as argument. The \"-f\" option or flag, known as \"\--force\",
+iv. **groupadd -f** -> creates a goup for users recieving the name for
+the group as argument. The "-f" option or flag, known as "--force",
 gracefully exit the command using a success code (0) when the group to
 be created exists.
 
-v\. **echo** -\> ouputs messages to the standard out of the terminal, it
+v. **echo** -> ouputs messages to the standard out of the terminal, it
 can be used for user prompts and status messages.
 
-vi\. **getent group **-\> \"getent\", called \"get entries\", queries
+vi. **getent group** -> "getent", called "get entries", queries
 the system's database, to check if a given keyword exists. in this case,
-it\'s querying the system\'s \"group\" database.
+it's querying the system's "group" database.
 
-vii\. **read -p **-\> \"read\" captures user input from the terminal.
-The \"-p\" option allows specifying a prompt message to display to the
+vii. **read -p** -> "read" captures user input from the terminal.
+The "-p" option allows specifying a prompt message to display to the
 user.
 
-viii\. **if ... then ... elif ... else ... fi ** -\> conditional
+viii. **if ... then ... elif ... else ... fi** -> conditional
 branching in bash that allows the execution of different actions
 depending on user input or command results.
 
-ix\. **for i in {1..5}, or for i in \$(seq 1 5) **-\> a loop construct
+ix. **for i in {1..5}, or for i in $(seq 1 5)** -> a loop construct
 (for loop), to iterate over a sequence of numbers automating repetitive
 tasks like creating multiple users.
 
-x\. **useradd -m -G** -\> Creates a new user account. The \"-m\" option
-creates a home directory for the user, and the \"-G\" option adds the
+x. **useradd -m -G** -> Creates a new user account. The "-m" option
+creates a home directory for the user, and the "-G" option adds the
 user to an additional specified group (in this case, devteam).
 
-xi\. **chpasswd** → Updates passwords for multiple users in batch or
-non-interactive mode by reading a list of \"username:password\" pairs
+xi. **chpasswd** -> Updates passwords for multiple users in batch or
+non-interactive mode by reading a list of "username:password" pairs
 from a file or from the output of another program via standard input
 (using a pipe). It then updates the corresponding user accounts
 accordingly.
 
-xii\. **chage -d 0** -\> forces a user\'s password to expire
+xii. **chage -d 0** -> forces a user's password to expire
 immediately, requiring the user to change their password upon first
-login. The \"-d 0\" sets the last password change date to epoch time
+login. The "-d 0" sets the last password change date to epoch time
 (January 1, 1970), triggering expiration.
 
-xiii\. **\[\[ \... =\~ \... \]\] **-\> Tests if a string matches a
+xiii. **[[... =~ ...]]** -> Tests if a string matches a
 regular expression pattern, like allowing a case-insensitive string.
 
-[The script with each line explained:]{.underline}
+The script with each line explained:
 
-\--bash code starts\-\--
+--bash code starts---
 
 ```bash
 
@@ -212,33 +208,35 @@ fi
 
 ```
 
-\--bash code ends\-\--
+--bash code ends---
 
-[Execution: ]{.underline}Run the script by typing in its relative path
+Execution:
+
+Run the script by typing in its relative path
 and pressing the return/enter key.
 
-[Verification:]{.underline}
+Verification:
 
-Run the command: \"cut -d: -f1 /etc/passwd\", or \"getent passwd \| cut
--d: -f1\", and check the lower pat of the output to check if the users
+Run the command: "cut -d: -f1 /etc/passwd", or "getent passwd | cut
+-d: -f1", and check the lower pat of the output to check if the users
 have been created.
 
-The \"cut\" command is used to extract sections from each line of a file
-with a specified delimeter (in this case \":\")
+The "cut" command is used to extract sections from each line of a file
+with a specified delimeter (in this case ":")
 
-The \"/etc/passwd\" is a common file that contains user account
+The "/etc/passwd" is a common file that contains user account
 information, with fields separated by a colon (:)
 
-The \"-d\" option allows the \"cut\" command to recieve delimeters that
+The "-d" option allows the "cut" command to recieve delimeters that
 specifies how sections (in this case, fields) are separated. Without
-providing a delimiter (e.g., -d:), the \"cut\" command will fail or
+providing a delimiter (e.g., -d:), the "cut" command will fail or
 produce unexpected results.
 
-\"-f1\" selects the first field (the username) from each line within a
-file (the \"passwd\" file. E.g.,
+"-f1" selects the first field (the username) from each line within a
+file (the "passwd" file. E.g.,
 username:password:UID:GID:GECOS:home_directory:shell).
 
-In a nutshell, the shell command \"cut -d: -f1 /etc/passwd\" lists all
+In a nutshell, the shell command "cut -d: -f1 /etc/passwd" lists all
 usernames on a Linux system by extracting the first field from each line
 of the /etc/passwd file.
 
