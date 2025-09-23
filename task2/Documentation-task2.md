@@ -1,6 +1,8 @@
 Task 2 Doumentation:
-Task instruction:
+
 **File Permissions & ACLs Project**
+
+**Task instruction:**
 Create a shared directory `/shared_data` where group members can read/write but not
 delete others' files. Use ACL to grant read-only access to one extra user outside the group.
 
